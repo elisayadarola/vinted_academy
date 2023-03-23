@@ -1,0 +1,26 @@
+# import sqlite3
+
+# db = sqlite3.connect('data.sqlite')
+
+
+# cursor = db.cursor()
+# cursor.execute('SELECT date FROM data')
+
+# import sqlite3
+
+# db = sqlite3.connect('data.sqlite')
+
+
+# cursor = db.cursor()
+# cursor.execute('SELECT date FROM data')
+
+# import csv
+
+# # Open the CSV file
+# with open( 'data/clicks/part-004.csv', newline='') as csvfile:
+#     # Create a CSV reader object
+#     reader = csv.reader(csvfile)
+#     # Loop through each row in the CSV file
+#     for row in reader:
+#         # Do something with the row
+#         print(row)
