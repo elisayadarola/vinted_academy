@@ -24,3 +24,26 @@
 #     for row in reader:
 #         # Do something with the row
 #         print(row)
+
+
+trying to get the number of rows in the clcik columns so i can count it since it's not a integer (this was integrated along with other fucntion containing relevant parameters and variables)
+
+def get_number_of_rows(rowe):
+    return{"tOTAL_CLICKS":rowe["click_target"].count("")}
+print(get_number_of_rows)
+
+FAILED - it either resulted in 0 or it gave me <function get_number_of_rows at 0x101ae5bc0> OR "The count is: <built-in method count of list object at 0x10acb8f80>" after other small changes. 
+
+# checking to see if it gives me clicks only
+def get_rows(row):
+    print(row.count("row"))
+
+FAILED - TypeError: 'function' object is not iterable
+
+
+# now I need to count the number of clicks
+click_count = 0
+for row in get_rows:
+    click_count += int(row["Clicks"])
+print(f"Total clicks:{click_count}") 
+ValueError: invalid literal for int() with base 10: 'ad'
