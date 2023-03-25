@@ -47,3 +47,29 @@ for row in get_rows:
     click_count += int(row["Clicks"])
 print(f"Total clicks:{click_count}") 
 ValueError: invalid literal for int() with base 10: 'ad'
+
+
+# now I need to count the number of clicks
+number_of_clicks = 0
+for row in clicks_csv:
+    if row["Clicks"] == "click_target":
+        number_of_clicks += 1
+number_of_clicks= sum(row["Clicks"].count(char) for row in get_rows for char in row["Clicks"])
+# print(f"Total clicks: {number_of_clicks} ")
+
+# print(int(clicks_csv.count("click_target")))
+
+# mapping the roiws and counting clicks
+rows = read_database('data/clicks')
+get_rows = map(get_columns, rows)
+def count_click():
+            for row in get_rows:
+                clicks_value = row["Clicks"]
+                return(clicks_value)
+num_of_clicks = count_click.count("Clicks")
+print(num_of_clicks)
+FAILED: Traceback (most recent call last):
+  File "/Users/kyoshi/Desktop/Vinted_academy_project/vinted_academy.py", line 45, in <module>
+    num_of_clicks = count_click.count("Clicks")
+                    ^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'count'
