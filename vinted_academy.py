@@ -5,6 +5,7 @@ import csv
 #I import the reduce function by VS Code suggestions after trying to use reduce without defining it
 from functools import reduce
 
+
 def read_database(data):
     # I pass it an empty list that will receive all of the .csv data found in the loop.
     csv_files = []
@@ -49,6 +50,13 @@ def get_columns(row):
 
 click_count = map(get_columns, clicks_csv)
 total_count = reduce(lambda a,b : a + b, click_count)
+
+def clicks_per_date(clicks_csv):
+    counts = defaultdict(int)
+    for row in clicks_csv:
+        if row['click_target']:
+            counts[row['date']] += 1
+    return counts
 
 print(total_count)
 
