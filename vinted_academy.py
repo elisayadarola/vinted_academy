@@ -32,12 +32,6 @@ all_user_data = clicks_csv + users_csv
 # print(all_user_data)
 
 # here starts the mapping of the info. I will need two parameters for the map function, so the first will be the function obtaining two rows containing the date and the clicks info
-# def get_columns(row):
-#    try:
-#     return{"Date":row["date"], "Clicks":row["click_target"]}
-#    except ValueError:
-#     return{"Date":row["date"], "Clicks":0}
-
 
 def get_columns(row):
    
@@ -51,34 +45,13 @@ def get_columns(row):
 click_count = map(get_columns, clicks_csv)
 total_count = reduce(lambda a,b : a + b, click_count)
 
-def clicks_per_date(clicks_csv):
-    counts = defaultdict(int)
-    for row in clicks_csv:
-        if row['click_target']:
-            counts[row['date']] += 1
-    return counts
-
 print(total_count)
-
-# def clicks_per_date(rows):
-#     click_count = {}
-#     for row in rows:
-#         date = row["Date"]
-#         clicks = int(row["Clicks"])
-#         if date in click_count:
-#             click_count[date] += clicks
-#         else:
-#             click_count[date] = clicks
-#     return [{"Date": date, "count": count} for date, count in click_count.items()]
-
-# print(clicks_per_date)
 
 # And then i map the rows. So here I couldn't use 'clicks_csv' for mapping because the parameter didn't accept a dictionary, so I had to input the specific directory path. 
 
-get_rows = map(get_columns, clicks_csv)
 
           
 
 
-# now I need to count the number of clicks
+
 

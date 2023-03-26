@@ -1,5 +1,8 @@
-# FIRST DECISION, SHOULD I USE SQL WIHT PYTHON OR ONLY PYTHON? I WASNT ABLE TO SUCCESFULLY ACCESS THE DATABASE WITH SQLLITE, SO SWITCHED TO ONLY PYTHON. 
 
+
+-- ACCESSING THE CSV FILES
+
+# FIRST DECISION, SHOULD I USE SQL WIHT PYTHON OR ONLY PYTHON? I WASNT ABLE TO SUCCESFULLY ACCESS THE DATABASE WITH SQLLITE, SO SWITCHED TO ONLY PYTHON. 
 #import sqlite3
 
 # db = sqlite3.connect('data.sqlite')
@@ -28,7 +31,10 @@
 #         print(row)
 
 
-trying to get the number of rows in the clcik columns so i can count it since it's not a integer (this was integrated along with other fucntion containing relevant parameters and variables)
+
+
+-- STARTING TO EXTRACT THE DATA
+trying to get the number of rows in the click columns so i can count it since it's not a integer (this was integrated along with other fucntion containing relevant parameters and variables)
 
 def get_number_of_rows(rowe):
     return{"tOTAL_CLICKS":rowe["click_target"].count("")}
@@ -43,12 +49,30 @@ def get_rows(row):
 FAILED - TypeError: 'function' object is not iterable
 
 
+
+
+--STARTED TO MAP THE DATA
+# And then i map the rows. So here I couldn't use 'clicks_csv' for mapping because the parameter didn't accept a dictionary, so I had to input the specific directory path. 
+
+get_rows = map(get_columns, clicks_csv)
+
+
+
+
+--STARTED TO COUNT THE NUMBER OF CLICKS
+
 # now I need to count the number of clicks
 click_count = 0
 for row in get_rows:
     click_count += int(row["Clicks"])
 print(f"Total clicks:{click_count}") 
 ValueError: invalid literal for int() with base 10: 'ad'
+
+# def get_columns(row):
+#    try:
+#     return{"Date":row["date"], "Clicks":row["click_target"]}
+#    except ValueError:
+#     return{"Date":row["date"], "Clicks":0}
 
 
 # now I need to count the number of clicks
@@ -94,3 +118,30 @@ TypeError: 'int' object is not iterable
 #             print(row, len(clicks_value))
 
 #THIS GAVE ME LENGHT OF THE WORD IN IT, NOT ACTUAL COUNT OF OCCURRENCES (CLICKS). 
+
+
+
+
+
+--STARTED TO TRY TO MERGE THE CLICKS OF THE SAME DATE.
+
+#TRYING TO GET THE NUMBER OF CLICKS IN SAME DATE. FAILED.
+# def clicks_per_date(clicks_csv):
+#     counts = defaultdict(int)
+#     for row in clicks_csv:
+#         if row['click_target']:
+#             counts[row['date']] += 1
+#     return counts
+
+# def clicks_per_date(rows):
+#     click_count = {}
+#     for row in rows:
+#         date = row["Date"]
+#         clicks = int(row["Clicks"])
+#         if date in click_count:
+#             click_count[date] += clicks
+#         else:
+#             click_count[date] = clicks
+#     return [{"Date": date, "count": count} for date, count in click_count.items()]
+
+# print(clicks_per_date)
