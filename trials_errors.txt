@@ -1,4 +1,6 @@
-# import sqlite3
+# FIRST DECISION, SHOULD I USE SQL WIHT PYTHON OR ONLY PYTHON? I WASNT ABLE TO SUCCESFULLY ACCESS THE DATABASE WITH SQLLITE, SO SWITCHED TO ONLY PYTHON. 
+
+#import sqlite3
 
 # db = sqlite3.connect('data.sqlite')
 
@@ -22,7 +24,7 @@
 #     reader = csv.reader(csvfile)
 #     # Loop through each row in the CSV file
 #     for row in reader:
-#         # Do something with the row
+#         # print the row
 #         print(row)
 
 
@@ -85,3 +87,10 @@ FAILED:Traceback (most recent call last):
     print(row, sum(int(sum_clicks)))
                ^^^^^^^^^^^^^^^^^^^^
 TypeError: 'int' object is not iterable
+
+#so for a dictionary we use len() to instead of count
+# for row in get_rows:
+#             clicks_value = row["Clicks"]
+#             print(row, len(clicks_value))
+
+#THIS GAVE ME LENGHT OF THE WORD IN IT, NOT ACTUAL COUNT OF OCCURRENCES (CLICKS). 

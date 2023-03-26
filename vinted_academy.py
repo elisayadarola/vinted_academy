@@ -25,6 +25,8 @@ def read_database(data):
 clicks_csv = read_database('data/clicks')
 users_csv = read_database('data/users')
 all_user_data = clicks_csv + users_csv
+
+# This print function failed to give me a count. It wouldn't even read it. 
 # print(f"the count is: {clicks_csv.count(read_database('data/clicks'))}")
 # print(all_user_data)
 
@@ -35,12 +37,14 @@ all_user_data = clicks_csv + users_csv
 #    except ValueError:
 #     return{"Date":row["date"], "Clicks":0}
 
+
 def get_columns(row):
    
     if row["click_target"] != "":
-        return 1
+        return (row["date"], 1)
     else:
-        return 0
+        return (row["date"], 0)
+    
    
 
 click_count = map(get_columns, clicks_csv)
@@ -64,44 +68,9 @@ print(total_count)
 # And then i map the rows. So here I couldn't use 'clicks_csv' for mapping because the parameter didn't accept a dictionary, so I had to input the specific directory path. 
 
 get_rows = map(get_columns, clicks_csv)
-#so for a dictionary we use len() to instead of count
-# for row in get_rows:
-#             clicks_value = row["Clicks"]
-#             print(row, len(clicks_value))
+
           
 
 
 # now I need to count the number of clicks
-# import csv
-# import os
 
-# # Function to read data from CSV files into a list of dictionaries
-# def read_database(data):
-#     csv_files = []
-#     for file in os.listdir(data):
-#         if file.endswith('.csv'):
-#             with open(os.path.join(data, file), newline='') as csvfile:
-#                 reader = csv.DictReader(csvfile)
-#                 csv_files.extend(reader)        
-#     return list(csv_files)
-
-# # Read clicks data into a list of dictionaries
-# clicks = read_database('data/clicks')
-
-# # Extract "date" and "click_target" columns and count clicks for each date
-# click_counts = {}
-# for row in clicks:
-#     date = row["date"]
-#     clicks = int(row["click_target"])
-#     if date in click_counts:
-#         click_counts[date] += clicks
-#     else:
-#         click_counts[date] = clicks
-
-# # Write results to CSV file
-# with open('data/total_clicks.csv', 'w', newline='') as csvfile:
-#     fieldnames = ['date', 'count']
-#     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-#     writer.writeheader()
-#     for date, count in click_counts.items():
-#         writer.writerow({'date': date, 'count': count})
